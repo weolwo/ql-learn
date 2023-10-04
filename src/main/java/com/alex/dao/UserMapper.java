@@ -1,6 +1,9 @@
 package com.alex.dao;
 
+
 import com.alex.bean.User;
+
+import java.util.List;
 
 /**
  * BY Alex CREATED 2021/8/18
@@ -9,5 +12,5 @@ import com.alex.bean.User;
 
 public interface UserMapper {
 
-    User selectUser(String name);
+  List<User> selectUserList();
 }

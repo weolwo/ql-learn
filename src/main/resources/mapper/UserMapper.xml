@@ -2,7 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.alex.dao.UserMapper">
-    <select id="selectUser" resultType="com.alex.bean.User">
-        select * from user where name=#{name}
+    <resultMap type="com.alex.bean.User" id="UserResult">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+        <result property="sal" column="sal"/>
+        <result property="sex" column="sex"/>
+        <result property="userLevel" column="user_Level"/>
+        <result property="createdDate" column="created_Date"/>
+    </resultMap>
+
+    <sql id="selectConfigVo">
+        select id, name, age, sal, sex, user_Level, created_Date
+        from t_user
+    </sql>
+
+
+
+    <select id="selectUserList" parameterType="String" resultMap="UserResult">
+        <include refid="selectConfigVo"/>  limit 1,10000
     </select>
 </mapper>
