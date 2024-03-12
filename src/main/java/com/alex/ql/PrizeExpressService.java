@@ -12,13 +12,13 @@ public class PrizeExpressService {
     private static final ThreadLocal<Map<String,Object>> threadLocal = ThreadLocal.withInitial(HashMap::new);
     private static final String USER_INFO = "USERINFO";
 
-    public String selectUser(String loginName){
+    public String selectUser(String loginName,String productId){
         return "archer";
     }
 
 
-    public String updatedUser(String loginName){
-        return "archer"+loginName;
+    public String updatedUser(User user){
+        return "archer";
     }
 
     public void setUserInfo(User user){
@@ -26,7 +26,7 @@ public class PrizeExpressService {
     }
 
 
-    public User getUserInfo(){
+    public User getUserInfo(int x){
       return (User) threadLocal.get().get(USER_INFO);
     }
     public static void clear(){

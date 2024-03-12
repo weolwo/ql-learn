@@ -4,15 +4,17 @@
 <mapper namespace="com.alex.dao.ExpressMapper">
     <resultMap type="com.alex.bean.Express" id="ExpressResult">
         <id property="id" column="id"/>
-        <result property="express" column="express"/>
+        <result property="expName" column="exp_name"/>
+        <result property="methodName" column="method_name"/>
+        <result property="params" column="params"/>
         <result property="activityCode" column="activity_code"/>
     </resultMap>
 
     <sql id="selectConfigVo">
-        select id, express, activity_code from t_express
+        select id, exp_name, activity_code,params,method_name from t_express
     </sql>
-    <select id="selectExpressById" resultMap="ExpressResult">
-        <include refid="selectConfigVo"/> where id=#{id}
+    <select id="selectExpressList" resultMap="ExpressResult">
+        <include refid="selectConfigVo"/>
     </select>
 
 </mapper>

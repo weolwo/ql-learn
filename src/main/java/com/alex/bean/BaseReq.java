@@ -9,5 +9,5 @@ public class BaseReq {
 
     private String loginName;
 
-    private Integer expressId;
+    private String activityCode;
 }

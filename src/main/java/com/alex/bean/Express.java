@@ -7,7 +7,13 @@ public class Express {
 
     private Integer id;
 
-    private String express;
-
     private String activityCode;
+
+    private String params;
+
+    private String[] paramsEx;
+
+    private String expName;
+
+    private String methodName;
 }

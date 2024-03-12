@@ -1,11 +1,12 @@
 package com.alex.controller;
 
+import com.alex.bean.Activity;
 import com.alex.bean.BaseReq;
-import com.alex.bean.Express;
 import com.alex.bean.PrizeRecords;
+import com.alex.dao.ActivityMapper;
 import com.alex.dao.ExpressMapper;
 import com.alex.dao.UserMapper;
-import com.alex.utils.QlRunnerUtil;
+import com.alex.utils.QlRunnerInitUtil;
 import com.ql.util.express.DefaultContext;
 import com.ql.util.express.ExpressRunner;
 import com.ql.util.express.IExpressContext;
@@ -30,7 +31,10 @@ public class UserController {
     private ExpressMapper expressMapper;
 
     @Autowired
-    private QlRunnerUtil qlRunner;
+    private ActivityMapper activityMapper;
+
+    @Autowired
+    private QlRunnerInitUtil qlRunner;
 
     @RequestMapping("/login")
     public Object login(HttpServletRequest request, @RequestBody PrizeRecords records) {
@@ -44,9 +48,9 @@ public class UserController {
         ExpressRunner runnerRunner = qlRunner.getRunner(req);
         System.out.println("初始化表达式耗时："+(System.currentTimeMillis()-t1)+"ms");
         IExpressContext<String, Object> context = new DefaultContext<>();
-        Express express = expressMapper.selectExpressById(req.getExpressId());
+        Activity activity = activityMapper.selectActivityByCode(req.getActivityCode());
         t1 = System.currentTimeMillis();
-        Object object = runnerRunner.execute(express.getExpress(), context, null, true, false);
+        Object object = runnerRunner.execute(activity.getExpress(), context, null, true, false);
         System.out.println("执行表达式耗时："+(System.currentTimeMillis()-t1)+"ms");
         return object;
     }
