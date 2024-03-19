@@ -1,6 +1,7 @@
 package com.alex.ql;
 
 import com.alex.bean.User;
+import com.alex.ex.BizException;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -19,6 +20,10 @@ public class PrizeExpressService {
 
     public String updatedUser(User user){
         return "archer";
+    }
+
+    public void buildException(String code,String msg) {
+       throw new BizException(msg,code);
     }
 
     public void setUserInfo(User user){

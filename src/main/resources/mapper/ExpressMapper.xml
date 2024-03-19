@@ -7,11 +7,11 @@
         <result property="expName" column="exp_name"/>
         <result property="methodName" column="method_name"/>
         <result property="params" column="params"/>
-        <result property="activityCode" column="activity_code"/>
+        <result property="expType" column="exp_type"/>
     </resultMap>
 
     <sql id="selectConfigVo">
-        select id, exp_name, activity_code,params,method_name from t_express
+        select id, exp_name, exp_type,params,method_name from t_express
     </sql>
     <select id="selectExpressList" resultMap="ExpressResult">
         <include refid="selectConfigVo"/>

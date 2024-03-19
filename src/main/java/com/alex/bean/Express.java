@@ -7,7 +7,7 @@ public class Express {
 
     private Integer id;
 
-    private String activityCode;
+    private Integer expType;
 
     private String params;
 
